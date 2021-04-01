@@ -17,7 +17,7 @@ app.use(express.static("public"));
 
 
 // Data-Base
-mongoose.connect("mongodb://localhost:27017/Task_magagement", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }); // connection to mongo db server;
+mongoose.connect("mongodb+srv://harry:Rajman1234@mflix.aoygq.mongodb.net/taskmanagement", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }); // connection to mongo db server;
 
 
 //Create a schema;
