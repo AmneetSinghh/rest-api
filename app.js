@@ -100,13 +100,6 @@ cron.schedule("*/10 * * * * *", function() {
         }
         if (flag == 1) {
             console.log("deleted-> ", flag);
-            app.get("/list", function(req, res) {
-                res.render("list");
-            });
-
-
-
-
         }
 
 
@@ -168,7 +161,8 @@ app.post("/add", function(req, res) {
 });
 
 
-
-app.listen(3005, function() {
-    console.log("Server started on port 3005");
+let port = process.env.PORT;
+if (port == null || port == "") port = 3005;
+app.listen(port, function() {
+    console.log("Server started successfully");
 });
