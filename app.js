@@ -21,7 +21,7 @@ app.use(express.static("public"));
 
 
 // Data-Base
-mongoose.connect("mongodb+srv://harry:Rajman1234@cluster0.aoygq.mongodb.net/Taskmanage_app", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }); // connection to mongo db server;
+mongoose.connect("mongodb+srv://Mansi:Rajman1234@todoapp.l0ntl.mongodb.net/MyTaskManage", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }); // connection to mongo db server;
 
 
 //Create a schema;
@@ -99,10 +99,14 @@ cron.schedule("*/10 * * * * *", function() {
 
         }
         if (flag == 1) {
-            app.get(function(req, res) {
-                res.redirect("/list");
-
+            console.log("deleted-> ", flag);
+            app.get("/list", function(req, res) {
+                res.render("list");
             });
+
+
+
+
         }
 
 
