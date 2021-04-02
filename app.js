@@ -20,7 +20,7 @@ app.use(express.static("public"));
 
 
 // Data-Base
-mongoose.connect("mongodb+srv://Mansi:Rajman1234@todoapp.l0ntl.mongodb.net/MyTaskManage", {\
+mongoose.connect("mongodb+srv://Mansi:Rajman1234@todoapp.l0ntl.mongodb.net/MyTaskManage", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }); // connection to mongo db server;
