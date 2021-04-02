@@ -7,7 +7,6 @@ const datetime = require('node-datetime');
 const cron = require('node-cron');
 const ejs = require("ejs");
 const _ = require("lodash");
-// var popup = require('popups');
 const alert = require('alert');
 
 
@@ -21,7 +20,10 @@ app.use(express.static("public"));
 
 
 // Data-Base
-mongoose.connect("mongodb+srv://Mansi:Rajman1234@todoapp.l0ntl.mongodb.net/MyTaskManage", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }); // connection to mongo db server;
+mongoose.connect("mongodb+srv://Mansi:Rajman1234@todoapp.l0ntl.mongodb.net/MyTaskManage", {\
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}); // connection to mongo db server;
 
 
 //Create a schema;
@@ -62,20 +64,7 @@ cron.schedule("*/10 * * * * *", function() {
                 // Delete from data base.
                 list_of_delete.push(list_of_tasks[i]);
             }
-            // console.log(that_date, current_time, delete_date);
 
-            // let cur_date = new Date();
-            // // current date
-            // console.log(cur_date, that_date);
-            // // current hours
-            // let h_that = that_date.getHours();
-            // let m_that = that_date.getMinutes();
-            // let h_cur = cur_date.getHours();
-            // let m_cur = cur_date.getMinutes();
-            // console.log("Time for Created-> ", h_that + " : ", m_that, "   Time current", h_cur, m_cur);
-
-
-            // console.log(i, list_of_tasks[i].id, list_of_tasks[i].duration, that);
         }
 
         var flag = 0;
@@ -143,15 +132,6 @@ app.post("/add", function(req, res) {
         duration: req.body.duration,
         delete_at: add_minutes(dt, req.body.duration)
     });
-    // Task_management.find({}).sort({ created_at: 'ascending' }).exec((err, docs) => {
-    //     if (err) {
-    //         console.log("error");
-    //     } else {
-    //         console.log("done");
-    //     }
-    // });
-
-
 
     task.save(function(err) {
         if (!err) res.redirect("/list");
@@ -161,8 +141,6 @@ app.post("/add", function(req, res) {
 });
 
 
-let port = process.env.PORT;
-if (port == null || port == "") port = 3005;
-app.listen(port, function() {
-    console.log("Server started successfully");
-});
+// let port = process.env.PORT;
+// if (port == null || port == "") port = 3005;
+app.listen(process.env.PORT || 3007)
